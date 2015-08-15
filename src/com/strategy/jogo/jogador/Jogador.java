@@ -10,10 +10,11 @@ import com.strategy.jogo.carta.CriaDeck;
 public abstract class Jogador {
 	
 	private static final int VIDA_INICIAL = 100;
+	private static final int MANA_INICIAL = 20;	
 	
 	private String nome;
 	private int vida;
-	private int pontoParaGastar;
+	private int mana;
 	private LinkedList<Carta> deck;
 	private ArrayList<Carta> cartasDaMao;
 	private Jogavel jogavel;
@@ -42,12 +43,12 @@ public abstract class Jogador {
 		this.vida = vida;
 	}
 
-	public int getPontoParaGastar() {
-		return pontoParaGastar;
+	public int getMana() {
+		return mana;
 	}
 
-	public void setPontoParaGastar(int pontoParaGastar) {
-		this.pontoParaGastar = pontoParaGastar;
+	public void setMana(int mana) {
+		this.mana = mana;
 	}
 
 	public LinkedList<Carta> getDeck() {
@@ -77,7 +78,8 @@ public abstract class Jogador {
 	}
 	
 	public Carta jogar(){
-		return this.getJogavel().escolheCarta(getCartasDaMao());
+		Carta cartaJogada = this.getJogavel().escolheCarta(this);
+		return cartaJogada;
 	}
 
 	public Jogador(){
@@ -86,12 +88,12 @@ public abstract class Jogador {
 	}
 	
 	public Jogador(ArrayList<Carta> cartas){
-		this("CPU", 0, cartas);
+		this("CPU", cartas);
 	}
 
-	public Jogador(String nome, int pontoParaGastar, ArrayList<Carta> cartas) {
+	public Jogador(String nome, ArrayList<Carta> cartas) {
 		this.setNome(nome);
-		this.setPontoParaGastar(pontoParaGastar);
+		this.setMana(MANA_INICIAL);
 		this.setDeck(CriaDeck.criaDeck(cartas));
 		this.setVida(VIDA_INICIAL);
 		this.setCartasDaMao();

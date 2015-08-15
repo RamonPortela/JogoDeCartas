@@ -32,6 +32,8 @@ public class Launcher {
 
 	private void comecaJogo(ArrayList<Jogador> jogadores, Jogo jogo) {
 		boolean primeiraRodada = true;
+		int numeroRodadas = 0;
+		
 		while((jogo.getJogadores().get(JOGADOR_UM).getVida() > 0) && (jogo.getJogadores().get(JOGADOR_DOIS).getVida() > 0)){
 			
 			if(primeiraRodada){
@@ -44,37 +46,19 @@ public class Launcher {
 			}else{
 				for (Jogador jogador : jogadores) {
 					jogador.setCartasDaMao(jogador.getDeck(), CARTAS_POR_RODADA);
+					if((numeroRodadas % 2) == 0){
+						jogador.setMana(jogador.getMana() + 1);						
+					}
 				}
 			}
 			
-			for (Jogador jogador : jogadores) {
-				if(jogador.getJogavel().toString().equals("npc")){					
-					System.out.println("O CPU está jogando...");
-					
-					Carta cartaJogada = jogador.jogar();
-					System.out.println(cartaJogada.getNome());
-					jogadores.get(JOGADOR_DOIS).setVida(jogadores.get(JOGADOR_DOIS).getVida() - cartaJogada.getDano());
-					System.out.println("Você sofreu: "+ cartaJogada.getDano() + " de dano.");
-				}
-				
-				else{
-					System.out.println("Escolha a carta que você vai jogar: ");
-					
-					for (Carta carta : jogador.getCartasDaMao()) {
-						System.out.println(carta.getNome());
-					}
-					
-					Carta cartaJogada = jogador.jogar();
-					System.out.println(cartaJogada.getNome());
-					jogadores.get(JOGADOR_UM).setVida(jogadores.get(JOGADOR_UM).getVida() - cartaJogada.getDano());
-					System.out.println("Você causou: "+ cartaJogada.getDano() + " de dano.");
-				}
-				
-			}
+			Launcher.fazRodada(jogadores);
 			
 			Launcher.exibePlacar(jogadores);
 			
 			Launcher.pressionarEnter();
+			
+			numeroRodadas++;
 			
 		}
 		
@@ -83,6 +67,34 @@ public class Launcher {
 		}
 		else{
 			System.out.println("É uma pena você perdeu");
+		}
+	}
+
+	public static void fazRodada(ArrayList<Jogador> jogadores) {
+		for (Jogador jogador : jogadores) {
+			if(jogador.getJogavel().toString().equals("npc")){					
+				System.out.println("O CPU está jogando...");
+				
+				Carta cartaJogada = jogador.jogar();
+				System.out.println(cartaJogada.getNome());
+				jogadores.get(JOGADOR_DOIS).setVida(jogadores.get(JOGADOR_DOIS).getVida() - cartaJogada.getDano());
+				System.out.println("Você sofreu: "+ cartaJogada.getDano() + " de dano.");
+			}
+			
+			else{
+				System.out.println("Escolha a carta que você vai jogar: ");
+				System.out.println("Você possui: "+ jogador.getMana() + " de mana.");
+				
+				for (Carta carta : jogador.getCartasDaMao()) {
+					System.out.println(carta.getNome());
+				}
+				
+				Carta cartaJogada = jogador.jogar();
+				System.out.println(cartaJogada.getNome());
+				jogadores.get(JOGADOR_UM).setVida(jogadores.get(JOGADOR_UM).getVida() - cartaJogada.getDano());
+				System.out.println("Você causou: "+ cartaJogada.getDano() + " de dano.");
+			}
+			
 		}
 	}
 	

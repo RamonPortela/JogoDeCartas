@@ -9,8 +9,11 @@ import com.strategy.jogo.jogador.Jogador;
 import com.strategy.jogo.jogador.criaJogadores;
 
 public class Jogo {
+	
+	private static final int NUMERO_DE_JOGADORES = 2;
+	
 	private String nome;
-	private ArrayList<Jogador> jogadores = new ArrayList<Jogador>(2);
+	private ArrayList<Jogador> jogadores = new ArrayList<Jogador>(NUMERO_DE_JOGADORES);
 	private Ordenavel embaralhador;
 	
 	public String getNome() {

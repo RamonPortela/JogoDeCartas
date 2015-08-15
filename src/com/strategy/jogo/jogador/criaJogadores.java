@@ -12,7 +12,7 @@ public class criaJogadores {
 		
 		jogadores.add(new JogadorNpc());		
 		
-		jogadores.add(new JogadorJogavel(ledadosJogador(), 0, cartas));
+		jogadores.add(new JogadorJogavel(ledadosJogador(), cartas));
 		
 		return jogadores;
 
