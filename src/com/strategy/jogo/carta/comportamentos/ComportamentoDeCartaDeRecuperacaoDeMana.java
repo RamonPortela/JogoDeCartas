@@ -14,9 +14,11 @@ public class ComportamentoDeCartaDeRecuperacaoDeMana implements ComportamentoDeC
 		int mana = ((CartaDeSuporteRecuperaMana)carta).getRecuperaMana();
 
 		for (Jogador jogador : jogadores) {
+
 			if(jogador == jogadorQueUsou){
 				jogador.setMana(jogador.getMana() + mana);
 			}
+
 		}
 
 	}

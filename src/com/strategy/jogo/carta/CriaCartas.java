@@ -33,6 +33,7 @@ public class CriaCartas {
 		cartas.add(new CartaDeSuporteRecuperaMana());
 		cartas.add(new CartaDeSuporteRecuperaMana("Bonus de mana", 0, 5));
 		cartas.add(new CartaDeSuporteRecuperaMana("Bonus de mana", 0, 5));
+		cartas.add(new CartaDeSuporteRecuperaMana("Bonus de mana", 0, 5));
 		cartas.add(new CartaDeSuporteRecuperaMana("Sacerdote", 3, 10));
 
 

@@ -12,7 +12,7 @@ import com.strategy.jogo.jogador.comportamento.ComportamentoJogador;
 public class Jogador {
 
 	private static final int VIDA_INICIAL = 100;
-	private static final int MANA_INICIAL = 20;
+	private static final int MANA_INICIAL = 15;
 
 	private String nome;
 	private int vida;

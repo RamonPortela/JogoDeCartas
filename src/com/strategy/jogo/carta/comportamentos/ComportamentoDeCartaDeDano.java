@@ -17,7 +17,6 @@ public class ComportamentoDeCartaDeDano implements ComportamentoDeCarta{
 				jogador.setVida(jogador.getVida() - dano);
 			}
 		}
-
 	}
 
 }

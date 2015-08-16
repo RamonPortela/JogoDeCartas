@@ -10,7 +10,7 @@ import com.strategy.jogo.jogador.Jogador;
 public class ComportamentoDeJogador implements ComportamentoJogador{
 
 	private static final int CUSTO_PASSAR_VEZ = 0;
-	private static final int OPCAO_MINIMA = 0;
+	private static final int OPCAO_MINIMA = -1;
 	private static final int VALOR_MINIMO_MANA = 0;
 	private static final int CORRETOR_OPCAO = 1;
 
@@ -46,6 +46,10 @@ public class ComportamentoDeJogador implements ComportamentoJogador{
 				temProblema = true;
 			}
 			else{
+				if(numeroCarta == OPCAO_MINIMA){
+					c = new PassarAVez("Passar a vez", CUSTO_PASSAR_VEZ);
+					return c;
+				}
 				if((jogador.getMana() - jogador.getCartasDaMao().get(numeroCarta).getCusto() < VALOR_MINIMO_MANA)){
 					System.out.println("Você não possui mana para usar esta carta.");
 					temProblema = true;

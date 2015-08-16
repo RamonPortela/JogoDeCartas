@@ -91,6 +91,7 @@ public class Launcher {
 				System.out.println("Você possui: "+ jogador.getMana() + " de mana.");
 
 				int contador = 0;
+				System.out.println(contador+": Passar a vez");
 				for (Carta carta : jogador.getCartasDaMao()) {
 					contador++;
 					System.out.println(contador+": "+carta.getNome()+ " - "+ carta.getCusto());

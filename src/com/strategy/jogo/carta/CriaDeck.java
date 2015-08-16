@@ -6,7 +6,7 @@ import java.util.LinkedList;
 public class CriaDeck {
 
 	private static final int QUANTIDADE_CARTAS_DECK = 30;
-	private static final int TOTAL_CARTAS = 20;
+	private static final int TOTAL_CARTAS = 28;
 
 	public static LinkedList<Carta> criaDeck(ArrayList<Carta> cartas){
 

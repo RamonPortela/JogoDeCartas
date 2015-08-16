@@ -1,6 +1,7 @@
 package com.strategy.jogo.carta;
 
 import com.strategy.jogo.carta.comportamentos.ComportamentoDeCarta;
+import com.strategy.jogo.carta.comportamentos.passivas.PossuiPassiva;
 
 public abstract class Carta {
 
@@ -12,16 +13,20 @@ public abstract class Carta {
 	private String nome;
 	private int custo;
 	private ComportamentoDeCarta cdc;
+	private PossuiPassiva pp;
 
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public int getCusto() {
 		return custo;
 	}
+
 	public void setCusto(int custo) {
 		this.custo = custo;
 	}
@@ -29,12 +34,23 @@ public abstract class Carta {
 	public ComportamentoDeCarta getCdc() {
 		return cdc;
 	}
+
 	public void setCdc(ComportamentoDeCarta cdc) {
 		this.cdc = cdc;
 	}
+
+	public PossuiPassiva getPp() {
+		return pp;
+	}
+
+	public void setPp(PossuiPassiva pp) {
+		this.pp = pp;
+	}
+
 	public Carta(){
 		this("Lacaio", CUSTO_PADRAO);
 	}
+
 	public Carta(String nomeCarta, int custoCarta) {
 		this.setNome(nomeCarta);
 		this.setCusto(custoCarta);
