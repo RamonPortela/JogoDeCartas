@@ -15,6 +15,9 @@ public class Launcher {
 	private static final int JOGADOR_DOIS = 1;
 	private static final int CARTAS_PRIMEIRA_RODADA = 5;
 	private static final int CARTAS_POR_RODADA = 1;
+	private static final int MANA_POR_RODADA = 1;
+	private static final int VIDA_MINIMA = 1;
+
 
 
 	public void preparaJogo(){
@@ -45,7 +48,7 @@ public class Launcher {
 				for (Jogador jogador : jogadores) {
 					jogador.setCartasDaMao(jogador.getDeck(), CARTAS_POR_RODADA);
 					if((numeroRodadas % 2) == 0){
-						jogador.setMana(jogador.getMana() + 1);
+						jogador.setMana(jogador.getMana() + MANA_POR_RODADA);
 					}
 				}
 			}
@@ -56,18 +59,18 @@ public class Launcher {
 
 			Launcher.pressionarEnter();
 
-			if(jogadores.get(JOGADOR_UM).getVida() < 1 && jogadores.get(JOGADOR_DOIS).getVida() < 1){
+			if(jogadores.get(JOGADOR_UM).getVida() < VIDA_MINIMA && jogadores.get(JOGADOR_DOIS).getVida() < VIDA_MINIMA){
 				break;
 			}
 
 			numeroRodadas++;
 		}
 
-		if(jogadores.get(JOGADOR_UM).getVida() < 1){
-			System.out.println("Parabens você venceu");
+		if(jogadores.get(JOGADOR_UM).getVida() < VIDA_MINIMA){
+			System.out.println("Parabens: "+ jogadores.get(JOGADOR_DOIS).getNome()+", você venceu");
 		}
 		else{
-			System.out.println("É uma pena você perdeu");
+			System.out.println("Parabens: "+ jogadores.get(JOGADOR_UM).getNome()+", você venceu");
 		}
 	}
 
@@ -105,7 +108,7 @@ public class Launcher {
 
 	private static void exibePlacar(ArrayList<Jogador> jogadores) {
 		for (Jogador jogador : jogadores) {
-			System.out.println(jogador.getNome() + " " + jogador.getVida() + " pontos de vida. | "+jogador.getMana()+ "pontos de mana.");
+			System.out.println(jogador.getNome() + " " + jogador.getVida() + " pontos de vida. | "+jogador.getMana()+ " pontos de mana.");
 		}
 
 	}

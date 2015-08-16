@@ -15,7 +15,7 @@ public class CartaDeLuta extends Carta{
 	}
 
 	CartaDeLuta(){
-		this("Lacaio", 1, Carta.DANO_PADRAO);
+		this("Lacaio", Carta.CUSTO_PADRAO, Carta.DANO_PADRAO);
 	}
 
 	CartaDeLuta(String nome, int custo, int dano) {

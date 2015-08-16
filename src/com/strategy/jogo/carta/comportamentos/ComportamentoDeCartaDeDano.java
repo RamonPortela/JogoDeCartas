@@ -20,10 +20,4 @@ public class ComportamentoDeCartaDeDano implements ComportamentoDeCarta{
 
 	}
 
-
-	@Override
-	public String toString(){
-		String descricao = "luta";
-		return descricao;
-	}
 }

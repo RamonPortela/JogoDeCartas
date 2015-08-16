@@ -7,6 +7,7 @@ public abstract class Carta {
 	protected static final int CUSTO_PADRAO = 1;
 	protected static final int DANO_PADRAO = 5;
 	protected static final int CURA_PADRAO = 5;
+	protected static final int RECUPERACAO_PADRAO = 5;
 
 	private String nome;
 	private int custo;

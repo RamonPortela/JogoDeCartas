@@ -7,8 +7,9 @@ import com.strategy.jogo.jogador.Jogador;
 
 public class ComportamentoDeNPC implements ComportamentoJogador{
 
-	private static final int NUMERO_TOTAL_DE_CARTAS = 5;
-	private static final int NUMERO_MININO_MANA = 0;
+	private static final int CUSTO_PASSAR_VEZ = 0;
+	private static final int CORRETOR_OPCAO = 1;
+	private static final int VALOR_MININO_MANA = 0;
 
 	@Override
 	public Carta escolheCarta(Jogador jogador) {
@@ -17,28 +18,28 @@ public class ComportamentoDeNPC implements ComportamentoJogador{
 		boolean escolheOutra = false;
 		Carta carta;
 
-		carta = jogador.getCartasDaMao().get((int) (Math.random() * NUMERO_TOTAL_DE_CARTAS));
+		carta = jogador.getCartasDaMao().get((int) (Math.random() * (jogador.getCartasDaMao().size() - CORRETOR_OPCAO)));
 
 		for (Carta cartaASerContada : jogador.getCartasDaMao()) {
-			if((jogador.getMana() - cartaASerContada.getCusto()) < NUMERO_MININO_MANA){
+			if((jogador.getMana() - cartaASerContada.getCusto()) < VALOR_MININO_MANA){
 				contadorDeCartas++;
 			}
 		}
 
-		if(contadorDeCartas < jogador.getCartasDaMao().size() - 1){
+		if(contadorDeCartas < jogador.getCartasDaMao().size() - CORRETOR_OPCAO){
 			do{
-				numeroDaCarta = (int) (Math.random() * (jogador.getCartasDaMao().size() - 1));
+				numeroDaCarta = (int) (Math.random() * (jogador.getCartasDaMao().size() - CORRETOR_OPCAO));
 
 				escolheOutra = false;
 
 				carta = jogador.getCartasDaMao().get(numeroDaCarta);
-				if((jogador.getMana() - carta.getCusto()) < NUMERO_MININO_MANA){
+				if((jogador.getMana() - carta.getCusto()) < VALOR_MININO_MANA){
 					escolheOutra = true;
 				}
 			}while(escolheOutra);
 		}
 		else{
-			carta = new PassarAVez("Passar a vez", NUMERO_MININO_MANA);
+			carta = new PassarAVez("Passar a vez", CUSTO_PASSAR_VEZ);
 		}
 
 		jogador.setMana((jogador.getMana() - carta.getCusto()));

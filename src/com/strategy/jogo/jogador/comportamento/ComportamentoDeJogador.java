@@ -8,6 +8,8 @@ import com.strategy.jogo.carta.PassarAVez;
 import com.strategy.jogo.jogador.Jogador;
 
 public class ComportamentoDeJogador implements ComportamentoJogador{
+
+	private static final int CUSTO_PASSAR_VEZ = 0;
 	private static final int OPCAO_MINIMA = 0;
 	private static final int VALOR_MINIMO_MANA = 0;
 	private static final int CORRETOR_OPCAO = 1;
@@ -23,7 +25,7 @@ public class ComportamentoDeJogador implements ComportamentoJogador{
 		}
 
 		if(!(contadorDeCartas < jogador.getCartasDaMao().size() - CORRETOR_OPCAO)){
-			c = new PassarAVez("Passar a vez", 0);
+			c = new PassarAVez("Passar a vez", CUSTO_PASSAR_VEZ);
 			return c;
 		}
 
