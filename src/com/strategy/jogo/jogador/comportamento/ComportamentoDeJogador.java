@@ -1,29 +1,28 @@
-package com.strategy.jogo.jogador;
+package com.strategy.jogo.jogador.comportamento;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.strategy.jogo.carta.Carta;
 import com.strategy.jogo.carta.PassarAVez;
+import com.strategy.jogo.jogador.Jogador;
 
-public class EJogavel implements ComportamentoJogador{
+public class ComportamentoDeJogador implements ComportamentoJogador{
 	private static final int OPCAO_MINIMA = 0;
-	private static final int OPCAO_MAXIMA = 4;
 	private static final int VALOR_MINIMO_MANA = 0;
 	private static final int CORRETOR_OPCAO = 1;
 
 	public Carta escolheCarta(Jogador jogador) {
 		Carta c;
 		int contadorDeCartas = 0;
-		int numeroDaCarta;
 
 		for(Carta cartaASerContada : jogador.getCartasDaMao()){
-			if((jogador.getMana() - cartaASerContada.getCusto()) < 0){
+			if((jogador.getMana() - cartaASerContada.getCusto()) < VALOR_MINIMO_MANA){
 				contadorDeCartas++;
 			}
 		}
 
-		if(!(contadorDeCartas < jogador.getCartasDaMao().size() - 1)){
+		if(!(contadorDeCartas < jogador.getCartasDaMao().size() - CORRETOR_OPCAO)){
 			c = new PassarAVez("Passar a vez", 0);
 			return c;
 		}
@@ -41,7 +40,7 @@ public class EJogavel implements ComportamentoJogador{
 				temProblema = true;
 			}
 
-			if(numeroCarta < OPCAO_MINIMA || numeroCarta > OPCAO_MAXIMA){
+			if(numeroCarta < OPCAO_MINIMA || numeroCarta > (jogador.getCartasDaMao().size() - CORRETOR_OPCAO)){
 				temProblema = true;
 			}
 			else{

@@ -6,12 +6,14 @@ import java.util.LinkedList;
 import com.strategy.jogo.carta.Carta;
 import com.strategy.jogo.carta.CriaCartas;
 import com.strategy.jogo.carta.CriaDeck;
+import com.strategy.jogo.jogador.comportamento.ComportamentoDeNPC;
+import com.strategy.jogo.jogador.comportamento.ComportamentoJogador;
 
-public abstract class Jogador {
-	
+public class Jogador {
+
 	private static final int VIDA_INICIAL = 100;
-	private static final int MANA_INICIAL = 20;	
-	
+	private static final int MANA_INICIAL = 20;
+
 	private String nome;
 	private int vida;
 	private int mana;
@@ -66,17 +68,17 @@ public abstract class Jogador {
 	private void setCartasDaMao(){
 		this.cartasDaMao = new ArrayList<Carta>();
 	}
-	
+
 	public void setCartasDaMao(LinkedList<Carta> deck, int qtdCartas) {
 		ArrayList<Carta> cartasDaMao = this.getCartasDaMao();
-		
+
 		for (int contador = 0; contador < qtdCartas; contador++) {
 			cartasDaMao.add(deck.poll());
 		}
-		
+
 		this.cartasDaMao = cartasDaMao;
 	}
-	
+
 	public Carta jogar(){
 		Carta cartaJogada = this.getJogavel().escolheCarta(this);
 		return cartaJogada;
@@ -84,19 +86,20 @@ public abstract class Jogador {
 
 	public Jogador(){
 		this(CriaCartas.criaCartas());
-		
-	}
-	
-	public Jogador(ArrayList<Carta> cartas){
-		this("CPU", cartas);
+
 	}
 
-	public Jogador(String nome, ArrayList<Carta> cartas) {
+	public Jogador(ArrayList<Carta> cartas){
+		this("CPU", cartas, new ComportamentoDeNPC());
+	}
+
+	public Jogador(String nome, ArrayList<Carta> cartas, ComportamentoJogador comportamento) {
 		this.setNome(nome);
 		this.setMana(MANA_INICIAL);
 		this.setDeck(CriaDeck.criaDeck(cartas));
 		this.setVida(VIDA_INICIAL);
 		this.setCartasDaMao();
+		this.setJogavel(comportamento);
 	}
-	
+
 }
