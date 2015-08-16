@@ -17,13 +17,13 @@ public abstract class Jogador {
 	private int mana;
 	private LinkedList<Carta> deck;
 	private ArrayList<Carta> cartasDaMao;
-	private Jogavel jogavel;
+	private ComportamentoJogador jogavel;
 
-	public Jogavel getJogavel() {
+	public ComportamentoJogador getJogavel() {
 		return jogavel;
 	}
 
-	public void setJogavel(Jogavel jogavel) {
+	public void setJogavel(ComportamentoJogador jogavel) {
 		this.jogavel = jogavel;
 	}
 
