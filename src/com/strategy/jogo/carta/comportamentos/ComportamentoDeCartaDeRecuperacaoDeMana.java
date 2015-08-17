@@ -27,4 +27,10 @@ public class ComportamentoDeCartaDeRecuperacaoDeMana implements ComportamentoDeC
 		return cartaDescricao;
 	}
 
+	@Override
+	public String toStringSemMana(Carta carta) {
+		String cartaDescricao = (carta.getNome()+ " - recupera "+ ((CartaDeSuporteRecuperaMana)carta).getRecuperaMana()+" de mana");
+		return cartaDescricao;
+	}
+
 }

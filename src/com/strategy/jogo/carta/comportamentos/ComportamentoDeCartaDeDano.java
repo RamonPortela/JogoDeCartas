@@ -26,4 +26,10 @@ public class ComportamentoDeCartaDeDano implements ComportamentoDeCarta{
 		return cartaDescricao;
 	}
 
+	@Override
+	public String toStringSemMana(Carta carta) {
+		String cartaDescricao = (carta.getNome()+" - causa "+ ((CartaDeLuta)carta).getDano()+" de dano");
+		return cartaDescricao;
+	}
+
 }

@@ -24,4 +24,10 @@ public class ComportamentoDeCartaDeCura implements ComportamentoDeCarta {
 		String cartaDescricao = (carta.getNome()+ " - " +carta.getCusto()+ " - recupera "+ ((CartaDeSuporteRecuperaVida)carta).getRecuperaVida()+" de vida");
 		return cartaDescricao;
 	}
+
+	@Override
+	public String toStringSemMana(Carta carta) {
+		String cartaDescricao = (carta.getNome()+" - recupera "+ ((CartaDeSuporteRecuperaVida)carta).getRecuperaVida()+" de vida");
+		return cartaDescricao;
+	}
 }

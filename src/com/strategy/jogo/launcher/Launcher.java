@@ -56,13 +56,14 @@ public class Launcher {
 
 			Launcher.fazRodada(jogadores);
 
+			if(jogadores.get(JOGADOR_UM).getVida() < VIDA_MINIMA || jogadores.get(JOGADOR_DOIS).getVida() < VIDA_MINIMA){
+				break;
+			}
+
 			Launcher.exibePlacar(jogadores);
 
 			Launcher.pressionarEnter();
 
-			if(jogadores.get(JOGADOR_UM).getVida() < VIDA_MINIMA && jogadores.get(JOGADOR_DOIS).getVida() < VIDA_MINIMA){
-				break;
-			}
 
 			numeroRodadas++;
 		}
@@ -75,7 +76,7 @@ public class Launcher {
 		}
 	}
 
-	public static void fazRodada(ArrayList<Jogador> jogadores) {
+	public static int fazRodada(ArrayList<Jogador> jogadores) {
 		int turnoStatus;
 		ArrayList<StatusJogador> copia;
 
@@ -90,14 +91,24 @@ public class Launcher {
 
 			jogador.setStatus(copia);
 
+			if(jogadores.get(JOGADOR_UM).getVida() < VIDA_MINIMA || jogadores.get(JOGADOR_DOIS).getVida() < VIDA_MINIMA){
+				return 0;
+			}
+
 			if(jogador.getJogavel().toString().equals("npc")){
 				System.out.println("O CPU está jogando...");
-
 				Carta cartaJogada = jogador.jogar();
-				System.out.println(cartaJogada.getNome());
 				if(!(cartaJogada.getNome().equals("Passar a vez"))){
+					System.out.println(cartaJogada.getCdc().toStringSemMana(cartaJogada) + " - " + cartaJogada.getPp().toString());
 					cartaJogada.getCdc().efeito(cartaJogada, jogadores, jogador);
 					cartaJogada.getPp().passiva(cartaJogada, jogadores, jogador);
+				}
+				else{
+					System.out.println(cartaJogada.getNome());
+				}
+
+				if(jogadores.get(JOGADOR_UM).getVida() < VIDA_MINIMA || jogadores.get(JOGADOR_DOIS).getVida() < VIDA_MINIMA){
+					return 0;
 				}
 
 				pressionarEnter();
@@ -115,14 +126,20 @@ public class Launcher {
 				}
 
 				Carta cartaJogada = jogador.jogar();
-				System.out.println(cartaJogada.getNome());
 				if(!(cartaJogada.getNome().equals("Passar a vez"))){
+					System.out.println(cartaJogada.getCdc().toStringSemMana(cartaJogada) + " - " + cartaJogada.getPp().toString());
 					cartaJogada.getCdc().efeito(cartaJogada, jogadores, jogador);
 					cartaJogada.getPp().passiva(cartaJogada, jogadores, jogador);
 				}
+				else{
+					System.out.println(cartaJogada.getNome());
+				}
+
 			}
 
 		}
+
+		return 0;
 	}
 
 	private static void exibePlacar(ArrayList<Jogador> jogadores) {

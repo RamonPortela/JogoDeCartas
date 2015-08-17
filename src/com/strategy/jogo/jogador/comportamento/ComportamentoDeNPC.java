@@ -1,7 +1,6 @@
 package com.strategy.jogo.jogador.comportamento;
 
 import com.strategy.jogo.carta.Carta;
-import com.strategy.jogo.carta.CartaDeLuta;
 import com.strategy.jogo.carta.PassarAVez;
 import com.strategy.jogo.jogador.Jogador;
 

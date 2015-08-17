@@ -1,12 +1,15 @@
-package com.strategy.jogo.carta.comportamentos.passivas;
+package com.strategy.jogo.carta.comportamentos.passivas.porRodada;
 
 import java.util.ArrayList;
 
 import com.strategy.jogo.carta.Carta;
+import com.strategy.jogo.carta.comportamentos.passivas.PossuiPassivaPorRodada;
 import com.strategy.jogo.jogador.Jogador;
 import com.strategy.jogo.jogador.status.StatusSangramento;
 
-public class PossuiPassivaSangrar implements PossuiPassiva{
+public class PossuiPassivaSangrarPorRodada extends PossuiPassivaPorRodada{
+
+	private static final int DANO_PADRAO = 2;
 
 	int dano;
 	int duracao;
@@ -30,8 +33,6 @@ public class PossuiPassivaSangrar implements PossuiPassiva{
 	@Override
 	public void passiva(Carta carta, ArrayList<Jogador> jogadores, Jogador jogadorQueUsou) {
 
-
-
 		for (Jogador jogador : jogadores) {
 
 			if(jogador != jogadorQueUsou){
@@ -42,8 +43,11 @@ public class PossuiPassivaSangrar implements PossuiPassiva{
 
 	}
 
+	public PossuiPassivaSangrarPorRodada(){
+		this(DANO_PADRAO, DURACAO_PADRAO);
+	}
 
-	public PossuiPassivaSangrar(int dano, int duracao){
+	public PossuiPassivaSangrarPorRodada(int dano, int duracao){
 		this.setDano(dano);
 		this.setDuracao(duracao);
 	}
