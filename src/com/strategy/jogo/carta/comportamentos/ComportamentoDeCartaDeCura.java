@@ -18,4 +18,10 @@ public class ComportamentoDeCartaDeCura implements ComportamentoDeCarta {
 		}
 
 	}
+
+	@Override
+	public String toString(Carta carta) {
+		String cartaDescricao = (carta.getNome()+ " - " +carta.getCusto()+ " - recupera "+ ((CartaDeSuporteRecuperaVida)carta).getRecuperaVida()+" de vida");
+		return cartaDescricao;
+	}
 }

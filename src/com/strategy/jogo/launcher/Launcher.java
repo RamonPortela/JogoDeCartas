@@ -8,6 +8,7 @@ import com.strategy.jogo.carta.Carta;
 import com.strategy.jogo.carta.CriaCartas;
 import com.strategy.jogo.jogador.Jogador;
 import com.strategy.jogo.jogador.criaJogadores;
+import com.strategy.jogo.jogador.status.StatusJogador;
 
 public class Launcher {
 
@@ -75,7 +76,20 @@ public class Launcher {
 	}
 
 	public static void fazRodada(ArrayList<Jogador> jogadores) {
+		int turnoStatus;
+		ArrayList<StatusJogador> copia;
+
 		for (Jogador jogador : jogadores) {
+			copia = (ArrayList<StatusJogador>) jogador.getStatus().clone();
+			for (StatusJogador status : jogador.getStatus()) {
+				turnoStatus = status.efeito(jogador);
+				if(turnoStatus == 0){
+					copia.remove(status);
+				}
+			}
+
+			jogador.setStatus(copia);
+
 			if(jogador.getJogavel().toString().equals("npc")){
 				System.out.println("O CPU está jogando...");
 
@@ -83,7 +97,10 @@ public class Launcher {
 				System.out.println(cartaJogada.getNome());
 				if(!(cartaJogada.getNome().equals("Passar a vez"))){
 					cartaJogada.getCdc().efeito(cartaJogada, jogadores, jogador);
+					cartaJogada.getPp().passiva(cartaJogada, jogadores, jogador);
 				}
+
+				pressionarEnter();
 			}
 
 			else{
@@ -94,13 +111,14 @@ public class Launcher {
 				System.out.println(contador+": Passar a vez");
 				for (Carta carta : jogador.getCartasDaMao()) {
 					contador++;
-					System.out.println(contador+": "+carta.getNome()+ " - "+ carta.getCusto());
+					System.out.println(contador+ ": "+carta.getCdc().toString(carta) + " - " + carta.getPp().toString());
 				}
 
 				Carta cartaJogada = jogador.jogar();
 				System.out.println(cartaJogada.getNome());
 				if(!(cartaJogada.getNome().equals("Passar a vez"))){
 					cartaJogada.getCdc().efeito(cartaJogada, jogadores, jogador);
+					cartaJogada.getPp().passiva(cartaJogada, jogadores, jogador);
 				}
 			}
 

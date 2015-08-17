@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import com.strategy.jogo.carta.Carta;
 import com.strategy.jogo.jogador.comportamento.ComportamentoDeJogador;
+import com.strategy.jogo.jogador.status.StatusInicial;
 
 public class criaJogadores {
 	public static ArrayList<Jogador> criarJogadores(ArrayList<Carta> cartas){
@@ -13,7 +14,7 @@ public class criaJogadores {
 
 		jogadores.add(new Jogador());
 
-		jogadores.add(new Jogador(ledadosJogador(), cartas, new ComportamentoDeJogador()));
+		jogadores.add(new Jogador(ledadosJogador(), cartas, new ComportamentoDeJogador(), new StatusInicial()));
 
 		return jogadores;
 

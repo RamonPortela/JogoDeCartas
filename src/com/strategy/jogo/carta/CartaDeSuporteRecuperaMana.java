@@ -35,5 +35,6 @@ public class CartaDeSuporteRecuperaMana extends CartaDeSuporte{
 		this.setCdc(new ComportamentoDeCartaDeRecuperacaoDeMana());
 		this.setRecuperaMana(recupera);
 		this.setPp(pp);
+
 	}
 }

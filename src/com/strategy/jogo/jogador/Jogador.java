@@ -8,6 +8,8 @@ import com.strategy.jogo.carta.CriaCartas;
 import com.strategy.jogo.carta.CriaDeck;
 import com.strategy.jogo.jogador.comportamento.ComportamentoDeNPC;
 import com.strategy.jogo.jogador.comportamento.ComportamentoJogador;
+import com.strategy.jogo.jogador.status.StatusInicial;
+import com.strategy.jogo.jogador.status.StatusJogador;
 
 public class Jogador {
 
@@ -20,6 +22,7 @@ public class Jogador {
 	private LinkedList<Carta> deck;
 	private ArrayList<Carta> cartasDaMao;
 	private ComportamentoJogador jogavel;
+	private ArrayList<StatusJogador> status = new ArrayList<StatusJogador>();
 
 	public ComportamentoJogador getJogavel() {
 		return jogavel;
@@ -51,6 +54,14 @@ public class Jogador {
 
 	public void setMana(int mana) {
 		this.mana = mana;
+	}
+
+	public ArrayList<StatusJogador> getStatus() {
+		return status;
+	}
+
+	public void setStatus(ArrayList<StatusJogador> status){
+		this.status = status;
 	}
 
 	public LinkedList<Carta> getDeck() {
@@ -90,16 +101,17 @@ public class Jogador {
 	}
 
 	public Jogador(ArrayList<Carta> cartas){
-		this("CPU", cartas, new ComportamentoDeNPC());
+		this("CPU", cartas, new ComportamentoDeNPC(), new StatusInicial());
 	}
 
-	public Jogador(String nome, ArrayList<Carta> cartas, ComportamentoJogador comportamento) {
+	public Jogador(String nome, ArrayList<Carta> cartas, ComportamentoJogador comportamento, StatusJogador status) {
 		this.setNome(nome);
 		this.setMana(MANA_INICIAL);
 		this.setDeck(CriaDeck.criaDeck(cartas));
 		this.setVida(VIDA_INICIAL);
 		this.setCartasDaMao();
 		this.setJogavel(comportamento);
+		this.getStatus().add(status);
 	}
 
 }

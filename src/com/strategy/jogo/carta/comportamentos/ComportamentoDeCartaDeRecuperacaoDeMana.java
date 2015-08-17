@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.strategy.jogo.carta.Carta;
 import com.strategy.jogo.carta.CartaDeSuporteRecuperaMana;
-import com.strategy.jogo.carta.CartaDeSuporteRecuperaVida;
 import com.strategy.jogo.jogador.Jogador;
 
 public class ComportamentoDeCartaDeRecuperacaoDeMana implements ComportamentoDeCarta {
@@ -22,4 +21,10 @@ public class ComportamentoDeCartaDeRecuperacaoDeMana implements ComportamentoDeC
 		}
 
 	}
+	@Override
+	public String toString(Carta carta) {
+		String cartaDescricao = (carta.getNome()+ " - " +carta.getCusto()+ " - recupera "+ ((CartaDeSuporteRecuperaMana)carta).getRecuperaMana()+" de mana");
+		return cartaDescricao;
+	}
+
 }

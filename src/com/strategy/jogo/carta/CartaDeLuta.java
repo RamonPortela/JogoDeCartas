@@ -21,7 +21,7 @@ public class CartaDeLuta extends Carta{
 	}
 
 	CartaDeLuta(String nome, int custo, int dano) {
-		this("nome", custo, dano, new NaoPossuiPassiva());
+		this(nome, custo, dano, new NaoPossuiPassiva());
 
 		this.setCdc(new ComportamentoDeCartaDeDano());
 		this.setDano(dano);
@@ -33,13 +33,6 @@ public class CartaDeLuta extends Carta{
 		this.setCdc(new ComportamentoDeCartaDeDano());
 		this.setDano(dano);
 		this.setPp(pp);
-	}
-
-	@Override
-	public String toString(){
-		String descricao = this.getNome();
-
-		return descricao;
 
 	}
 
