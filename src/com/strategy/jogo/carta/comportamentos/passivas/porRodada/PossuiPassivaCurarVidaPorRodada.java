@@ -1,7 +1,5 @@
 package com.strategy.jogo.carta.comportamentos.passivas.porRodada;
 
-import java.util.ArrayList;
-
 import com.strategy.jogo.carta.Carta;
 import com.strategy.jogo.carta.comportamentos.passivas.PossuiPassivaPorRodada;
 import com.strategy.jogo.jogador.Jogador;
@@ -31,15 +29,9 @@ public class PossuiPassivaCurarVidaPorRodada extends PossuiPassivaPorRodada{
 	}
 
 	@Override
-	public void passiva(Carta carta, ArrayList<Jogador> jogadores, Jogador jogadorQueUsou) {
+	public void passiva(Carta carta, Jogador jogadorQueUsou) {
 
-		for (Jogador jogador : jogadores) {
-
-			if(jogador == jogadorQueUsou){
-				jogador.getStatus().add(new StatusCura(this.getCuraVida(), this.getDuracao()));
-			}
-
-		}
+		jogadorQueUsou.getStatus().add(new StatusCura(this.getCuraVida(), this.getDuracao()));
 
 	}
 

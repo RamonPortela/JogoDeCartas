@@ -8,11 +8,23 @@ import com.strategy.jogo.jogador.comportamento.ComportamentoDeJogador;
 import com.strategy.jogo.jogador.status.StatusInicial;
 
 public class criaJogadores {
-	public static ArrayList<Jogador> criarJogadores(ArrayList<Carta> cartas){
+	public static ArrayList<Jogador> criarJogadoresCPU(ArrayList<Carta> cartas){
 
 		ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
 
 		jogadores.add(new Jogador());
+
+		jogadores.add(new Jogador(ledadosJogador(), cartas, new ComportamentoDeJogador(), new StatusInicial()));
+
+		return jogadores;
+
+	}
+
+	public static ArrayList<Jogador> criarJogadoresMPLocal(ArrayList<Carta> cartas){
+
+		ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
+
+		jogadores.add(new Jogador(ledadosJogador(), cartas, new ComportamentoDeJogador(), new StatusInicial()));
 
 		jogadores.add(new Jogador(ledadosJogador(), cartas, new ComportamentoDeJogador(), new StatusInicial()));
 

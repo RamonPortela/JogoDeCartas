@@ -1,4 +1,4 @@
-package com.strategy.jogo.launcher;
+package com.strategy.jogo.launcher.local;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -9,8 +9,9 @@ import com.strategy.jogo.carta.CriaCartas;
 import com.strategy.jogo.jogador.Jogador;
 import com.strategy.jogo.jogador.criaJogadores;
 import com.strategy.jogo.jogador.status.StatusJogador;
+import com.strategy.jogo.menu.Menu;
 
-public class Launcher {
+public class LauncherLocal {
 
 	private static final int JOGADOR_UM = 0;
 	private static final int JOGADOR_DOIS = 1;
@@ -21,10 +22,29 @@ public class Launcher {
 
 
 
-	public void preparaJogo(){
+	public void preparaJogo(int tipoDePartida){
 
 		ArrayList<Carta> cartas = CriaCartas.criaCartas();
-		ArrayList<Jogador> jogadores = criaJogadores.criarJogadores(cartas);
+		ArrayList<Jogador> jogadores;
+
+		if(tipoDePartida == Menu.JOGO_CONTRA_CPU){
+			jogadores = criaJogadores.criarJogadoresCPU(cartas);
+		}else{
+			jogadores = criaJogadores.criarJogadoresMPLocal(cartas);
+		}
+
+		for (Jogador jogador : jogadores) {
+
+			if(jogador.equals(jogadores.get(JOGADOR_UM))){
+				jogador.setOponente(jogadores.get(JOGADOR_DOIS));
+				System.out.println("Meu oponente é o jogador: "+jogadores.get(JOGADOR_DOIS).getNome());
+			}
+
+			else{
+				jogador.setOponente(jogadores.get(JOGADOR_UM));
+				System.out.println("Meu oponente é o jogador: "+jogadores.get(JOGADOR_UM).getNome());
+			}
+		}
 
 		Jogo jogo = new Jogo(jogadores, cartas);
 
@@ -54,25 +74,25 @@ public class Launcher {
 				}
 			}
 
-			Launcher.fazRodada(jogadores);
+			LauncherLocal.fazRodada(jogadores);
 
 			if(jogadores.get(JOGADOR_UM).getVida() < VIDA_MINIMA || jogadores.get(JOGADOR_DOIS).getVida() < VIDA_MINIMA){
 				break;
 			}
 
-			Launcher.exibePlacar(jogadores);
+			LauncherLocal.exibePlacar(jogadores);
 
-			Launcher.pressionarEnter();
+			LauncherLocal.pressionarEnter();
 
 
 			numeroRodadas++;
 		}
 
 		if(jogadores.get(JOGADOR_UM).getVida() < VIDA_MINIMA){
-			System.out.println("Parabens: "+ jogadores.get(JOGADOR_DOIS).getNome()+", você venceu");
+			System.out.println("Parabens: "+ jogadores.get(JOGADOR_DOIS).getNome()+", você venceu\n");
 		}
 		else{
-			System.out.println("Parabens: "+ jogadores.get(JOGADOR_UM).getNome()+", você venceu");
+			System.out.println("Parabens: "+ jogadores.get(JOGADOR_UM).getNome()+", você venceu\n");
 		}
 	}
 
@@ -100,8 +120,8 @@ public class Launcher {
 				Carta cartaJogada = jogador.jogar();
 				if(!(cartaJogada.getNome().equals("Passar a vez"))){
 					System.out.println(cartaJogada.getCdc().toStringSemMana(cartaJogada) + " - " + cartaJogada.getPp().toString());
-					cartaJogada.getCdc().efeito(cartaJogada, jogadores, jogador);
-					cartaJogada.getPp().passiva(cartaJogada, jogadores, jogador);
+					cartaJogada.getCdc().efeito(cartaJogada, jogador);
+					cartaJogada.getPp().passiva(cartaJogada, jogador);
 				}
 				else{
 					System.out.println(cartaJogada.getNome());
@@ -128,14 +148,16 @@ public class Launcher {
 				Carta cartaJogada = jogador.jogar();
 				if(!(cartaJogada.getNome().equals("Passar a vez"))){
 					System.out.println(cartaJogada.getCdc().toStringSemMana(cartaJogada) + " - " + cartaJogada.getPp().toString());
-					cartaJogada.getCdc().efeito(cartaJogada, jogadores, jogador);
-					cartaJogada.getPp().passiva(cartaJogada, jogadores, jogador);
+					cartaJogada.getCdc().efeito(cartaJogada, jogador);
+					cartaJogada.getPp().passiva(cartaJogada, jogador);
 				}
 				else{
 					System.out.println(cartaJogada.getNome());
 				}
 
 			}
+
+			pressionarEnter();
 
 		}
 

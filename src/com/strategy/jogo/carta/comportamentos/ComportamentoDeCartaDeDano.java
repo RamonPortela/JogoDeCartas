@@ -10,14 +10,11 @@ import com.strategy.jogo.jogador.Jogador;
 public class ComportamentoDeCartaDeDano implements ComportamentoDeCarta{
 
 	@Override
-	public void efeito(Carta carta, ArrayList<Jogador> jogadores, Jogador jogadorQueUsou) {
+	public void efeito(Carta carta, Jogador jogadorQueUsou) {
 		int dano = ((CartaDeLuta)carta).getDano();
 
-		for (Jogador jogador : jogadores) {
-			if(jogador != jogadorQueUsou){
-				jogador.setVida(jogador.getVida() - dano);
-			}
-		}
+		jogadorQueUsou.getOponente().setVida(jogadorQueUsou.getOponente().getVida() - dano);
+
 	}
 
 	@Override

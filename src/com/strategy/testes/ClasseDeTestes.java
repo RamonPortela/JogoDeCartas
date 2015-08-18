@@ -1,11 +1,13 @@
 package com.strategy.testes;
 
-import com.strategy.jogo.launcher.Launcher;
+import com.strategy.jogo.menu.Menu;
 
 public class ClasseDeTestes {
 	public static void main(String[] args) {
-		Launcher launcher = new Launcher();
-		launcher.preparaJogo();
+		/*Launcher launcher = new Launcher();
+		launcher.preparaJogo();*/
+
+		Menu.menuPrincipal();
 
 /*		ArrayList<Carta> cartas = CriaCartas.criaCartas();
 		ArrayList<Jogador> jogadores = criaJogadores.criarJogadores(cartas);

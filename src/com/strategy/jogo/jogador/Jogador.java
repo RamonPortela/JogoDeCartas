@@ -21,6 +21,7 @@ public class Jogador {
 	private int mana;
 	private LinkedList<Carta> deck;
 	private ArrayList<Carta> cartasDaMao;
+	private Jogador oponente;
 	private ComportamentoJogador jogavel;
 	private ArrayList<StatusJogador> status = new ArrayList<StatusJogador>();
 
@@ -90,6 +91,14 @@ public class Jogador {
 		this.cartasDaMao = cartasDaMao;
 	}
 
+	public Jogador getOponente(){
+		return this.oponente;
+	}
+
+	public void setOponente(Jogador oponente){
+		this.oponente = oponente;
+	}
+
 	public Carta jogar(){
 		Carta cartaJogada = this.getJogavel().escolheCarta(this);
 		return cartaJogada;
@@ -112,6 +121,27 @@ public class Jogador {
 		this.setCartasDaMao();
 		this.setJogavel(comportamento);
 		this.getStatus().add(status);
+	}
+
+	@Override
+	public boolean equals(Object jogador) {
+		if(this == jogador)
+			return true;
+
+		if(jogador == null)
+			return false;
+
+		if(jogador instanceof Jogador){
+			Jogador jogadorComparacao = (Jogador) jogador;
+
+			if(jogadorComparacao.getJogavel() == this.getJogavel())
+				return (this.getNome().equals(jogadorComparacao.getNome()) && (this.getCartasDaMao() == jogadorComparacao.getCartasDaMao()));
+			else
+				return false;
+		}
+		else{
+			return false;
+		}
 	}
 
 }

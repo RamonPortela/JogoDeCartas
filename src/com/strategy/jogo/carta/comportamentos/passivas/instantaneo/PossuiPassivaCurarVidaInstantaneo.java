@@ -1,7 +1,5 @@
 package com.strategy.jogo.carta.comportamentos.passivas.instantaneo;
 
-import java.util.ArrayList;
-
 import com.strategy.jogo.carta.Carta;
 import com.strategy.jogo.carta.comportamentos.passivas.PossuiPassiva;
 import com.strategy.jogo.jogador.Jogador;
@@ -21,15 +19,9 @@ public class PossuiPassivaCurarVidaInstantaneo implements PossuiPassiva{
 	}
 
 	@Override
-	public void passiva(Carta carta, ArrayList<Jogador> jogadores, Jogador jogadorQueUsou) {
+	public void passiva(Carta carta, Jogador jogadorQueUsou) {
 
-		for (Jogador jogador : jogadores) {
-
-			if(jogador == jogadorQueUsou){
-				jogador.setVida(jogador.getVida() + this.getCuraVida());
-			}
-
-		}
+		jogadorQueUsou.setVida(jogadorQueUsou.getVida() + this.getCuraVida());
 
 	}
 

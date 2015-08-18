@@ -41,7 +41,7 @@ public class Jogo {
 	}
 
 	public Jogo(ArrayList<Carta> cartas){
-		this(criaJogadores.criarJogadores(cartas), cartas);
+		this(criaJogadores.criarJogadoresCPU(cartas), cartas);
 	}
 
 	public Jogo(ArrayList<Jogador> jogadores, ArrayList<Carta> cartas){
