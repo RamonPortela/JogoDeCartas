@@ -6,6 +6,8 @@ import com.strategy.jogo.jogador.Jogador;
 
 public class PossuiPassivaCurarVidaInstantaneo implements PossuiPassiva{
 
+	private static final long serialVersionUID = 2201L;
+
 	private static final int CURA_PADRAO = 5;
 
 	private int curaVida;

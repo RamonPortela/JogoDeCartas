@@ -4,6 +4,8 @@ import com.strategy.jogo.jogador.Jogador;
 
 public class StatusCura implements StatusJogador{
 
+	private static final long serialVersionUID = 21001L;
+
 	int cura;
 	int duracao;
 

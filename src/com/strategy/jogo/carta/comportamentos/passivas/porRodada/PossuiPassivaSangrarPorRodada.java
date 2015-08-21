@@ -7,6 +7,8 @@ import com.strategy.jogo.jogador.status.StatusSangramento;
 
 public class PossuiPassivaSangrarPorRodada extends PossuiPassivaPorRodada{
 
+	private static final long serialVersionUID = 2102L;
+
 	private static final int DANO_PADRAO = 2;
 
 	int dano;

@@ -5,6 +5,9 @@ import com.strategy.jogo.carta.CartaDeSuporteRecuperaVida;
 import com.strategy.jogo.jogador.Jogador;
 
 public class ComportamentoDeCartaDeCura implements ComportamentoDeCarta {
+
+	private static final long serialVersionUID = 1001L;
+
 	@Override
 	public void efeito(Carta carta, Jogador jogadorQueUsou) {
 		int cura = ((CartaDeSuporteRecuperaVida)carta).getRecuperaVida();

@@ -6,6 +6,8 @@ import com.strategy.jogo.carta.comportamentos.passivas.PossuiPassiva;
 
 public class CartaDeSuporteRecuperaMana extends CartaDeSuporte{
 
+	private static final long serialVersionUID = 12001L;
+
 	private static final int CUSTO_PADRAO = 0;
 
 	private int recuperaMana;

@@ -10,6 +10,8 @@ import com.strategy.jogo.carta.Carta;
 
 public class OrdenaPorNome implements Ordenavel{
 
+	private static final long serialVersionUID = 11L;
+
 	@Override
 	public ArrayList<Carta> embaralha(ArrayList<Carta> deck) {
 		Collections.sort(deck, OrdenaPorNome.EmbaralhaNome);

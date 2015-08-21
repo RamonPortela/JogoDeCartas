@@ -1,9 +1,13 @@
 package com.strategy.jogo.carta;
 
+import java.io.Serializable;
+
 import com.strategy.jogo.carta.comportamentos.ComportamentoDeCarta;
 import com.strategy.jogo.carta.comportamentos.passivas.PossuiPassiva;
 
-public abstract class Carta {
+public abstract class Carta implements Serializable{
+
+	private static final long serialVersionUID = 10000L;
 
 	protected static final int CUSTO_PADRAO = 1;
 	protected static final int DANO_PADRAO = 5;

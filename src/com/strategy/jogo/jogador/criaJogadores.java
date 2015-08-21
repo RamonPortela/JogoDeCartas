@@ -14,7 +14,7 @@ public class criaJogadores {
 
 		jogadores.add(new Jogador());
 
-		jogadores.add(new Jogador(ledadosJogador(), cartas, new ComportamentoDeJogador(), new StatusInicial()));
+		jogadores.add(new Jogador(ledadosJogador(), cartas, 1, new ComportamentoDeJogador(), new StatusInicial()));
 
 		return jogadores;
 
@@ -24,15 +24,19 @@ public class criaJogadores {
 
 		ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
 
-		jogadores.add(new Jogador(ledadosJogador(), cartas, new ComportamentoDeJogador(), new StatusInicial()));
+		for (int contadorDeJogadores = 0; contadorDeJogadores < 2; contadorDeJogadores++) {
+			jogadores.add(new Jogador(ledadosJogador(), cartas, contadorDeJogadores, new ComportamentoDeJogador(), new StatusInicial()));
 
-		jogadores.add(new Jogador(ledadosJogador(), cartas, new ComportamentoDeJogador(), new StatusInicial()));
+		}
+
+
+		//jogadores.add(new Jogador(ledadosJogador(), cartas, new ComportamentoDeJogador(), new StatusInicial()));
 
 		return jogadores;
 
 	}
 
-	private static String ledadosJogador() {
+	public static String ledadosJogador() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Entre com seu nome: ");
 		String nome = input.nextLine();

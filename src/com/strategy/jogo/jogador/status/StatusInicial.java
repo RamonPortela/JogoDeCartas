@@ -4,6 +4,8 @@ import com.strategy.jogo.jogador.Jogador;
 
 public class StatusInicial implements StatusJogador{
 
+	private static final long serialVersionUID = 21999L;
+
 	private static final int DURACAO = 1;
 
 	private int duracao = DURACAO;

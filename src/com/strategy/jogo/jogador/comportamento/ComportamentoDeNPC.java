@@ -6,6 +6,8 @@ import com.strategy.jogo.jogador.Jogador;
 
 public class ComportamentoDeNPC implements ComportamentoJogador{
 
+	private static final long serialVersionUID = 20002L;
+
 	private static final int CUSTO_PASSAR_VEZ = 0;
 	private static final int CORRETOR_OPCAO = 1;
 	private static final int VALOR_MININO_MANA = 0;

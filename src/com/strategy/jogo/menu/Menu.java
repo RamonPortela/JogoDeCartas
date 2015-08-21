@@ -3,6 +3,7 @@ package com.strategy.jogo.menu;
 import java.util.Scanner;
 
 import com.strategy.jogo.launcher.local.LauncherLocal;
+import com.strategy.jogo.launcher.multiplayer.online.LauncherMultiPlayer;
 
 public class Menu {
 
@@ -13,6 +14,9 @@ public class Menu {
 
 	public static final int JOGO_CONTRA_CPU = 1;
 	public static final int JOGO_MULTIPLAYER_LOCAL = 2;
+
+	public static final int CRIAR_SERVIDOR = 1;
+	public static final int ENTRAR_EM_SERVIDOR = 2;
 
 	public static void menuPrincipal() {
 
@@ -50,6 +54,7 @@ public class Menu {
 	private static void subMenuMultiPlayer(){
 		Scanner input = new Scanner(System.in);
 		LauncherLocal launcher = new LauncherLocal();
+		LauncherMultiPlayer launcherOnline = new LauncherMultiPlayer();
 		int opcaoMenu;
 
 		do{
@@ -68,11 +73,11 @@ public class Menu {
 				break;
 
 			case SEGUNDA_OPCAO:
-				//
+				launcherOnline.selecionaOpcao(CRIAR_SERVIDOR);
 				break;
 
 			case TERCEIRA_OPCAO:
-				//
+				launcherOnline.selecionaOpcao(ENTRAR_EM_SERVIDOR);
 				break;
 
 			default:

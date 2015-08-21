@@ -4,6 +4,8 @@ import com.strategy.jogo.jogador.Jogador;
 
 public class StatusSangramento implements StatusJogador {
 
+	private static final long serialVersionUID = 21002L;
+
 	int sangramento;
 	int duracao;
 

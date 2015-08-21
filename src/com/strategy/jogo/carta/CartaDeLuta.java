@@ -5,6 +5,9 @@ import com.strategy.jogo.carta.comportamentos.passivas.NaoPossuiPassiva;
 import com.strategy.jogo.carta.comportamentos.passivas.PossuiPassiva;
 
 public class CartaDeLuta extends Carta{
+
+	private static final long serialVersionUID = 11000L;
+
 	private int dano;
 
 

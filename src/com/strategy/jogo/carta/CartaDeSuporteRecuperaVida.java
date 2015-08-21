@@ -6,6 +6,9 @@ import com.strategy.jogo.carta.comportamentos.passivas.PossuiPassiva;
 
 public class CartaDeSuporteRecuperaVida extends CartaDeSuporte {
 
+
+	private static final long serialVersionUID = 12002L;
+
 	private int recuperaVida;
 
 	public int getRecuperaVida() {

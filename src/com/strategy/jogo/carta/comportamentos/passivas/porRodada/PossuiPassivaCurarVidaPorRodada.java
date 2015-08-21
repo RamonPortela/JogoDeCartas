@@ -7,6 +7,8 @@ import com.strategy.jogo.jogador.status.StatusCura;
 
 public class PossuiPassivaCurarVidaPorRodada extends PossuiPassivaPorRodada{
 
+	private static final long serialVersionUID = 2101L;
+
 	private static final int CURA_PADRAO = 2;
 
 	private int curaVida;

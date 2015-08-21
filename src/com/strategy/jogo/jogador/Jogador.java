@@ -1,5 +1,6 @@
 package com.strategy.jogo.jogador;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -11,7 +12,9 @@ import com.strategy.jogo.jogador.comportamento.ComportamentoJogador;
 import com.strategy.jogo.jogador.status.StatusInicial;
 import com.strategy.jogo.jogador.status.StatusJogador;
 
-public class Jogador {
+public class Jogador implements Serializable{
+
+	private static final long serialVersionUID = 20000L;
 
 	private static final int VIDA_INICIAL = 100;
 	private static final int MANA_INICIAL = 15;
@@ -22,6 +25,7 @@ public class Jogador {
 	private LinkedList<Carta> deck;
 	private ArrayList<Carta> cartasDaMao;
 	private Jogador oponente;
+	private int identificador;
 	private ComportamentoJogador jogavel;
 	private ArrayList<StatusJogador> status = new ArrayList<StatusJogador>();
 
@@ -99,6 +103,15 @@ public class Jogador {
 		this.oponente = oponente;
 	}
 
+
+	public int getIdentificador() {
+		return identificador;
+	}
+
+	public void setIdentificador(int identificador) {
+		this.identificador = identificador;
+	}
+
 	public Carta jogar(){
 		Carta cartaJogada = this.getJogavel().escolheCarta(this);
 		return cartaJogada;
@@ -110,14 +123,15 @@ public class Jogador {
 	}
 
 	public Jogador(ArrayList<Carta> cartas){
-		this("CPU", cartas, new ComportamentoDeNPC(), new StatusInicial());
+		this("CPU", cartas, 0, new ComportamentoDeNPC(), new StatusInicial());
 	}
 
-	public Jogador(String nome, ArrayList<Carta> cartas, ComportamentoJogador comportamento, StatusJogador status) {
+	public Jogador(String nome, ArrayList<Carta> cartas, int identificador, ComportamentoJogador comportamento, StatusJogador status) {
 		this.setNome(nome);
 		this.setMana(MANA_INICIAL);
 		this.setDeck(CriaDeck.criaDeck(cartas));
 		this.setVida(VIDA_INICIAL);
+		this.setIdentificador(identificador);
 		this.setCartasDaMao();
 		this.setJogavel(comportamento);
 		this.getStatus().add(status);
@@ -135,7 +149,7 @@ public class Jogador {
 			Jogador jogadorComparacao = (Jogador) jogador;
 
 			if(jogadorComparacao.getJogavel() == this.getJogavel())
-				return (this.getNome().equals(jogadorComparacao.getNome()) && (this.getCartasDaMao() == jogadorComparacao.getCartasDaMao()));
+				return this.getIdentificador() == jogadorComparacao.getIdentificador();
 			else
 				return false;
 		}
